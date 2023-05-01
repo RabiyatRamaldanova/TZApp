@@ -1,7 +1,7 @@
 import {useEffect, useRef} from 'react';
 import {Alert} from 'react-native';
 import {getCardsAPI} from '../api';
-import {CardTypeEnum, IAddCardProps} from '../types';
+import {CardType, IAddCardProps} from '../types';
 import useAppReducer from './useAppReducer';
 
 export default () => {
@@ -39,7 +39,7 @@ export default () => {
     console.log('addCard -->', item);
   };
 
-  const onFilterCards = (filterBy: CardTypeEnum) => {
+  const onFilterCards = (filterBy: CardType) => {
     dispatch({type: 'FILTER_CARDS', payload: filterBy});
   };
 

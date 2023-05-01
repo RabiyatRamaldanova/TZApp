@@ -4,7 +4,10 @@ export enum CardTypeEnum {
   CORSES = 'CORSES',
 }
 
-type CardType = CardTypeEnum.ALL | CardTypeEnum.TASKS | CardTypeEnum.CORSES;
+export type CardType =
+  | CardTypeEnum.ALL
+  | CardTypeEnum.TASKS
+  | CardTypeEnum.CORSES;
 
 export interface ICard {
   card_id: number;
