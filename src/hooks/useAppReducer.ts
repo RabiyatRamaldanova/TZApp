@@ -32,7 +32,7 @@ export default () => {
         return {
           ...state,
           fullCardList: [...state.fullCardList, ...action.payload],
-          cardList: state.fullCardList.filter(
+          cardList: [...state.fullCardList, ...action.payload].filter(
             card => card.type === state.filterBy,
           ),
         };

@@ -10,7 +10,7 @@ const RootNavigation = () => {
   return (
     <NavigationContainer>
       <SafeAreaProvider>
-        <RootStack.Navigator>
+        <RootStack.Navigator screenOptions={{headerShown: false}}>
           <RootStack.Screen name="WelcomeScreen" component={WelcomeScreen} />
           <RootStack.Screen name="CardsScreen" component={CardList} />
         </RootStack.Navigator>

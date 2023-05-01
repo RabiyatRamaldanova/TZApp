@@ -6,7 +6,6 @@ export const getCardsAPI = async (page: number) => {
       `https://644e16f71b4567f4d57f9ab7.mockapi.io/api/card/?page=${page}&limit=10`,
     )
     .then(function (response) {
-      console.log(page, response.data);
       return response.data;
     })
     .catch(function (error) {

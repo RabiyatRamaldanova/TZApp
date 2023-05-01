@@ -1,14 +1,20 @@
-import {useEffect, useMemo, useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import {Alert} from 'react-native';
 import {getCardsAPI} from '../api';
-import {useCardContext} from './useCardContext';
-import {IAddCardProps} from '../types';
+import {CardTypeEnum, IAddCardProps} from '../types';
 import useAppReducer from './useAppReducer';
 
 export default () => {
   const {state, dispatch} = useAppReducer();
-  const pageRef = useRef(0);
+  const pageRef = useRef(1);
   const {cardList, filterBy} = state;
+
+  useEffect(() => {
+    getCardsAPI(pageRef.current).then(responseData =>
+      dispatch({type: 'ADD_CARD', payload: responseData}),
+    );
+    pageRef.current = pageRef.current + 1;
+  }, [dispatch]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -20,13 +26,9 @@ export default () => {
 
     return () => {
       clearInterval(intervalId);
-      pageRef.current = 0;
+      pageRef.current = 1;
     };
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   dispatch({type: 'FILTER_CARDS', payload: 'ALL'});
-  // }, [dispatch]);
 
   const onCardPress = (item: IAddCardProps) => {
     addCard(item);
@@ -37,7 +39,7 @@ export default () => {
     console.log('addCard -->', item);
   };
 
-  const onFilterCards = (filterBy: 'ALL' | 'TASKS' | 'CORSES') => {
+  const onFilterCards = (filterBy: CardTypeEnum) => {
     dispatch({type: 'FILTER_CARDS', payload: filterBy});
   };
 

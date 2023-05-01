@@ -15,7 +15,8 @@ const Card = ({item, onCardPress}: IProps) => {
       key={card_id}
       style={({pressed}) => [styles.container, {opacity: pressed ? 0.5 : 1}]}
       onPress={() => onCardPress(newObject)}>
-      <Text>{item.name}</Text>
+      <Text>name: {item.name}</Text>
+      {item?.description ? <Text>description: {item.description}</Text> : <></>}
     </Pressable>
   );
 };

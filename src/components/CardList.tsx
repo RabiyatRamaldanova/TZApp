@@ -2,6 +2,7 @@ import React from 'react';
 import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Card from './Card';
 import useCardList from '../hooks/useCardList';
+import {CardTypeEnum} from '../types';
 
 interface IProps {
   navigation: {natigate: (arg0: string) => void};
@@ -18,7 +19,7 @@ const CardList = ({navigation}: IProps) => {
             ...styles.filterButton,
             backgroundColor: filterBy === 'ALL' ? '#019CFF' : 'white',
           }}
-          onPress={() => onFilterCards('ALL')}>
+          onPress={() => onFilterCards(CardTypeEnum.ALL)}>
           <Text>All</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -26,7 +27,7 @@ const CardList = ({navigation}: IProps) => {
             ...styles.filterButton,
             backgroundColor: filterBy === 'TASKS' ? '#019CFF' : 'white',
           }}
-          onPress={() => onFilterCards('TASKS')}>
+          onPress={() => onFilterCards(CardTypeEnum.TASKS)}>
           <Text>Tasks</Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -34,7 +35,7 @@ const CardList = ({navigation}: IProps) => {
             ...styles.filterButton,
             backgroundColor: filterBy === 'CORSES' ? '#019CFF' : 'white',
           }}
-          onPress={() => onFilterCards('CORSES')}>
+          onPress={() => onFilterCards(CardTypeEnum.CORSES)}>
           <Text>Corses</Text>
         </TouchableOpacity>
       </View>

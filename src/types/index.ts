@@ -1,4 +1,4 @@
-enum CardTypeEnum {
+export enum CardTypeEnum {
   ALL = 'ALL',
   TASKS = 'TASKS',
   CORSES = 'CORSES',
