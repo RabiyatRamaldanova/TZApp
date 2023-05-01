@@ -12,6 +12,7 @@ const Card = ({item, onCardPress}: IProps) => {
 
   return (
     <Pressable
+      key={card_id}
       style={({pressed}) => [styles.container, {opacity: pressed ? 0.5 : 1}]}
       onPress={() => onCardPress(newObject)}>
       <Text>{item.name}</Text>

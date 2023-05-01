@@ -3,9 +3,12 @@ import {FlatList, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import Card from './Card';
 import useCardList from '../hooks/useCardList';
 
-const CardList = ({}) => {
+interface IProps {
+  navigation: {natigate: (arg0: string) => void};
+}
+
+const CardList = ({navigation}: IProps) => {
   const {cardList, filterBy, onCardPress, onFilterCards} = useCardList();
-  console.log(filterBy, 'CardList')
 
   return (
     <View style={styles.container}>
@@ -37,7 +40,7 @@ const CardList = ({}) => {
       </View>
       <FlatList
         data={cardList}
-        keyExtractor={item => item.card_id}
+        keyExtractor={item => String(item.card_id)}
         renderItem={({item}) => <Card {...{item, onCardPress}} />}
       />
     </View>
@@ -71,5 +74,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     marginHorizontal: 5,
     justifyContent: 'space-between',
+    marginVertical: 10,
   },
 });
